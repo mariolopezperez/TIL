@@ -4,11 +4,14 @@ Check current settings
 ```
 Get-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
 ```
+
 Set PAC file
+
 ```
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -name "AutoConfigURL" -value "http://proxypac.domain.com/proxy.pac"
 ```
 Enable/disable Proxy
+
 ```
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -name "ProxyEnable" -value "1"
 Set-ItemProperty "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -name "ProxyEnable" -value "0"
