@@ -3,6 +3,6 @@
 ```
 displayswitch /clone
 ```
-````
+```
 displayswitch /extend
 ```
