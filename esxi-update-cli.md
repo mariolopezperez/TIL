@@ -1,5 +1,4 @@
-
-**** Updating ESXI from CLI ****
+#### Updating ESXI from CLI 
 
 To update ESXi via CLI, follow these steps:
 
