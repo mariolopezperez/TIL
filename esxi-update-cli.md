@@ -1,3 +1,6 @@
+
+**** Updating ESXI from CLI ****
+
 To update ESXi via CLI, follow these steps:
 
 1. Log in to the ESXi host using SSH.
