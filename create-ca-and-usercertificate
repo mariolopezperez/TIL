@@ -1,15 +1,23 @@
-## You will be prompted to set a passphrase. Make sure to set it to something you’ll remember.
-openssl genrsa -des3 -out myca.key 4096
+### You will be prompted to set a passphrase. Make sure to set it to something you’ll remember.
+`openssl genrsa -des3 -out myca.key 4096`
 
-## Makes the signing CA valid for 10 years. Change as requirements dictate.
-## You will be asked to fill in attributes for your CA.
-openssl req -new -x509 -days 3650 -key myca.key -out myca.crt
+### Makes the signing CA valid for 10 years. Change as requirements dictate.
+### You will be asked to fill in attributes for your CA.
+`openssl req -new -x509 -days 3650 -key myca.key -out myca.crt`
 
-## You will be prompted for a passphrase which will be distributed to your user with the certificate. 
-openssl genrsa -des3 -out testuser.key 2048
+### Create private key. You will be prompted for a passphrase which will be distributed to your user with the certificate. 
+`openssl genrsa -des3 -out testuser.key 2048`
 
-# Without password protection:
+### Create private key. Without password protection:
 openssl genrsa -out testuser.key 2048
 
-# New CSR
-openssl req -new -key testuser.key -out testuser.csr
+### New CSR
+`openssl req -new -key testuser.key -out testuser.csr`
+
+### Sign with our certificate-signing CA
+## This certificate will be valid for one year. Change as per your requirements.
+## You can increment the serial if you have to reissue the CERT
+`openssl x509 -req -days 365 -in testuser.csr -CA myca.crt -CAkey myca.key -set_serial 01 -out testuser.crt`
+
+### Export to PKCS12
+`openssl pkcs12 -export -out testuser.pfx -inkey testuser.key -in testuser.crt -certfile myca.crt`
