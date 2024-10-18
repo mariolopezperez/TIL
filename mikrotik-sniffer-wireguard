@@ -1,0 +1,37 @@
+tool sniffer set streaming-enabled=yes streaming-server=192.168.1.100
+/tool sniffer set filter-interface wlan1,wlan2
+/tool sniffer set filter-ip-address 192.168.1.150/32
+
+streaming-enabled – enables forwarding of packets.
+streaming-server – IP address of the host where the Wireshark is running.
+filter-interface – interface(s) where the capture will happen. (In my case, I have two radios 2,4 GHz & 5 GHz and I selected both)
+filter-ip-address – you can limit the sniffing to only a specific IP address(es). 
+Start the capture:
+
+/tool sniffer start
+Review the sniffer status:
+
+[MYUSER@MikroTik] > /tool sniffer print
+                     only-headers: no
+                     memory-limit: 100KiB
+                    memory-scroll: yes
+                        file-name:
+                       file-limit: 1000KiB
+                streaming-enabled: yes
+                 streaming-server: 192.168.1.100
+                    filter-stream: yes
+                 filter-interface: wlan1,wlan2
+               filter-mac-address:
+              filter-mac-protocol:
+                filter-ip-address: 192.168.1.150/32
+              filter-ipv6-address:
+               filter-ip-protocol:
+                      filter-port:
+                       filter-cpu:
+                      filter-size:
+                 filter-direction: any
+  filter-operator-between-entries: or
+                          running: yes
+Stop capture:
+
+/tool sniffer stop
